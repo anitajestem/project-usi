@@ -2,8 +2,9 @@ import joblib
 import numpy as np
 from flask import Blueprint, render_template, request, app
 from flask_login import login_required, current_user
-from . import db #kropka to miejsce gdzie sie znajdujesz
+from . import db #dot is where u actualy are
 
+MODEL_PATH = '/Users/anitachrust/Desktop/pytong/project/model.sav'
 main = Blueprint('main', __name__)
 
 
@@ -27,7 +28,7 @@ def ml():
 @login_required
 def ValuePredictor(to_predict_list):
     to_predict = np.array(to_predict_list).reshape(-1, 1)
-    loaded_model = joblib.load('D:\PROJEKT US\project\model.sav')
+    loaded_model = joblib.load(MODEL_PATH)
     result = loaded_model.predict(to_predict)
     return result[0]
 

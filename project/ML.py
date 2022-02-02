@@ -23,4 +23,3 @@ filename = "model.sav"
 
 loaded_model = joblib.load(filename)
 print(loaded_model.predict([[20]]))
-
